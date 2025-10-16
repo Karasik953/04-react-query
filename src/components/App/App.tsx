@@ -1,3 +1,4 @@
+// src/components/App/App.tsx
 import { useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
@@ -10,8 +11,9 @@ import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import MovieModal from "../MovieModal/MovieModal";
 
-import { fetchMovies } from "../../services/movieService";
-import type { Movie, MovieSearchResponse } from "../../types/movie";
+import { fetchMovies, type MovieSearchResponse } from "../../services/movieService";
+import type { Movie } from "../../types/movie";
+
 
 export default function App() {
   const [query, setQuery] = useState<string>("");

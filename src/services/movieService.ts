@@ -1,7 +1,6 @@
-
+// src/services/movieService.ts
 import axios from "axios";
 import type { Movie } from "../types/movie";
-
 
 export type MovieSearchResponse = {
   page: number;
@@ -41,7 +40,7 @@ export async function fetchMovies(
   return data;
 }
 
-
+// зображення
 export const buildPosterUrl = (path?: string | null): string =>
   path ? `https://image.tmdb.org/t/p/w500${path}` : "";
 
