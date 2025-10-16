@@ -1,5 +1,14 @@
+
 import axios from "axios";
-import type { MovieSearchResponse } from "../types/movie";
+import type { Movie } from "../types/movie";
+
+
+export type MovieSearchResponse = {
+  page: number;
+  results: Movie[];
+  total_pages: number;
+  total_results: number;
+};
 
 const TOKEN = import.meta.env.VITE_TMDB_TOKEN as string | undefined;
 const API_BASE_URL = "https://api.themoviedb.org/3";
@@ -8,8 +17,10 @@ if (!TOKEN) {
   console.warn("⚠️ TMDB token not found. Add VITE_TMDB_TOKEN to .env");
 }
 
-
-export async function fetchMovies(query: string, page: number): Promise<MovieSearchResponse> {
+export async function fetchMovies(
+  query: string,
+  page: number
+): Promise<MovieSearchResponse> {
   const config = {
     params: {
       query,
@@ -27,10 +38,10 @@ export async function fetchMovies(query: string, page: number): Promise<MovieSea
     config
   );
 
-  return data; 
+  return data;
 }
 
-// зображення
+
 export const buildPosterUrl = (path?: string | null): string =>
   path ? `https://image.tmdb.org/t/p/w500${path}` : "";
 
